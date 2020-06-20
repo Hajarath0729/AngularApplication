@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="py-5">
+    <h2>FINRA GITHUB ASSIGNMENT</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form [formGroup]="phoneNumberForm">
+        <div class="row">
+          <label for="phoneNumber" class="col-sm-2 col-form-label">Enter Phone Number:</label>
+          <div class="col-sm-3">
+            <input type="input" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+          </div>
+          <div class="col-sm-3">
+            <button 
+              type="button" 
+              class="btn btn-success"
+              (click)="alphaNumericPhoneNumbers()"
+              [disabled]="phoneNumberForm.invalid"
+              >
+                Primary
+              </button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 30px;">
+    <div class="col-sm-6">
+      <h2>Total Count: {{alphaNumericPhoneNumbersList?.length}}</h2>
+    </div>
+  </div>
+
+  <div>
+    <div class="row" style="padding: 30px 0px 0px 20px" >
+      <table class="table table-striped col-sm-6">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Alpha Numeric Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let phoneNumber of pageOfItems">
+            <td>{{phoneNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <jw-pagination [items]="alphaNumericPhoneNumbersList" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+</div>
+    
+</div>
